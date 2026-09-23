@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Recuperar Contraseña</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+
+  <div class="auth-card">
+    <h2>🏔️ SUMMIT</h2>
+    <h3>Recuperar Contraseña</h3>
+    <p class="auth-desc">Ingresa tu correo registrado para recibir las instrucciones de recuperación.</p>
+    
+    <form id="recoverForm" novalidate>
+      <div class="form-group">
+        <label for="recoverEmail">Correo Electrónico</label>
+        <input type="email" id="recoverEmail" placeholder="ejemplo@correo.com" required>
+        <span class="error-msg" id="errorRecoverEmail"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full">Enviar Instrucciones</button>
+    </form>
+
+    <p class="auth-footer"><a href="login.html">← Volver al inicio de sesión</a></p>
+  </div>
+
+  <script src="js/recover-validation.js"></script>
+  </script>
+</body>
+</html>

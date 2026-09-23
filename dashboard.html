@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Panel de Usuario</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Menú Lateral -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h2>🏔️ SUMMIT</h2>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active"><a href="#"><i class="fa-solid fa-user"></i> Mi Perfil</a></li>
+        <li><a href="#"><i class="fa-solid fa-suitcase"></i> Mis Reservas</a></li>
+        <li><a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a></li>
+        <li><a href="#"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+        <li><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1>Bienvenido, Usuario</h1>
+        <span class="user-role-badge">Rol: Cliente / Turista</span>
+      </header>
+
+      <section class="profile-card">
+        <h3>Información del Perfil</h3>
+        <div class="profile-info">
+          <p><strong>Nombre:</strong> Usuario Cliente</p>
+          <p><strong>Correo:</strong> cliente@summit.com</p>
+          <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+          <p><strong>Ciudad:</strong> Bogotá D.C.</p>
+        </div>
+      </section>
+
+      <section class="reservations-section">
+        <h3>Próximos Viajes Reservados</h3>
+        <div class="reservation-card">
+          <h4>📍 Paquete La Calera - Día de Campo</h4>
+          <p>Fecha: 15 de Octubre, 2026</p>
+          <span class="status-badge status-confirmed">Confirmado</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>
