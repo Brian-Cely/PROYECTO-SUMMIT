@@ -1,4 +1,6 @@
-document.getElementById('registerForm').addEventListener('submit', function(e) {
+const registerForm = document.getElementById('registerForm');
+
+registerForm.addEventListener('submit', function(e) {
   e.preventDefault();
 
   let valid = true;
@@ -7,33 +9,33 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
   const nombre = document.getElementById('nombre');
   const email = document.getElementById('email');
   const password = document.getElementById('password');
-  const confirm = document.getElementById('confirmPassword');
+  const userRole = document.getElementById('userRole');
 
-  // Limpiar errores previas
+  // Limpiar errores previos
   document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+  document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
 
   // Validar Nombre
   if (nombre.value.trim() === '') {
-    document.getElementById('errorNombre').textContent = 'El nombre es obligatorio.';
+    mostrarError(nombre, 'errorNombre', 'El nombre es obligatorio.');
     valid = false;
   }
 
   // Validar Correo
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value)) {
-    document.getElementById('errorEmail').textContent = 'Ingrese un correo electrónico válido.';
+  if (!emailRegex.test(email.value.trim())) {
+    mostrarError(email, 'errorEmail', 'Ingrese un correo electrónico válido.');
     valid = false;
   }
 
   // Validar Contraseña (mínimo 6 caracteres)
   if (password.value.length < 6) {
-    document.getElementById('errorPassword').textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    mostrarError(password, 'errorPassword', 'La contraseña debe tener al menos 6 caracteres.');
     valid = false;
   }
 
-  // Validar Confirmación
-  if (password.value !== confirm.value) {
-    document.getElementById('errorConfirm').textContent = 'Las contraseñas no coinciden.';
+  if (userRole.value === '') {
+    mostrarError(userRole, 'errorUserRole', 'Seleccione un tipo de usuario.');
     valid = false;
   }
 
@@ -41,6 +43,10 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     alert('¡Registro exitoso! Redirigiendo al inicio de sesión...');
     window.location.href = 'login.html';
   }
-// Verifica que haya texto antes del @, un dominio, un punto y una extensión
-const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 });
+
+function mostrarError(inputElement, idSpanError, mensaje) {
+  const errorElement = document.getElementById(idSpanError);
+  errorElement.textContent = mensaje;
+  inputElement.classList.add('input-error');
+}

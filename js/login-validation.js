@@ -2,13 +2,14 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
   let valid = true;
-  let mensajesAlert = [];
 
   const email = document.getElementById('loginEmail');
   const password = document.getElementById('loginPassword');
+  const userRole = document.getElementById('userRole');
 
   // Limpiar mensajes de error previos en el DOM
   document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
+  document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
 
   // 1. VALIDACIÓN DEL CORREO
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,14 +34,21 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     valid = false;
   }
 
+  if (userRole.value === '') {
+    mostrarError(userRole, 'errorUserRole', 'Seleccione un tipo de usuario.');
+    valid = false;
+  }
+
   // 3. BLOQUEO EN CASO DE ERRORES
   if (!valid) {
     return; // Detiene la ejecución aquí
   }
 
-  // 4. SI TODO ES VÁLIDO
-  console.log("¡Inicio de sesión exitoso! Redirigiendo al panel de control...");
-  window.location.href = 'dashboard.html';
+  // Redirigir según el rol seleccionado
+  const dashboard = userRole.value === 'administrador'
+    ? 'dashboard-admin.html'
+    : 'dashboard-cliente.html';
+  window.location.href = dashboard;
 });
 
 // Función auxiliar necesaria para inyectar errores en el HTML

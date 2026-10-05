@@ -9,7 +9,14 @@
 <body class="auth-body">
 
   <div class="auth-card">
-    <h2>🏔️ SUMMIT</h2>
+    <p class="auth-links"><a href="index.html">← Volver al inicio</a></p>
+    <div class="logo auth-logo">
+      <img src="images/logoSUMMIT.PNG" alt="Logo SUMMIT" class="header-logo-img">
+      <div class="logo-text">
+        <span class="logo-title">SUMMIT</span>
+        <span class="logo-subtitle">PAQUETES</span>
+      </div>
+    </div>
     <h3>Iniciar Sesión</h3>
     
     <form id="loginForm" novalidate>
@@ -25,11 +32,21 @@
         <span class="error-msg" id="errorLoginPassword"></span>
       </div>
 
+      <div class="form-group">
+        <label for="userRole">Tipo de usuario</label>
+        <select id="userRole" required>
+          <option value="">Seleccione un rol</option>
+          <option value="cliente">Cliente / Turista</option>
+          <option value="administrador">Administrador</option>
+        </select>
+        <span class="error-msg" id="errorUserRole"></span>
+      </div>
+
       <div class="auth-links">
         <a href="recuperar.html">¿Olvidaste tu contraseña?</a>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-full">Ingresar</button>
+      <button type="submit" class="btn3 btn-primary btn-full">Ingresar</button>
     </form>
 
     <p class="auth-footer">¿No tienes cuenta? <a href="registro.html">Regístrate</a></p>

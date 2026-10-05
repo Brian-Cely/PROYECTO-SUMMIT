@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Panel de Administración</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <a class="sidebar-brand" href="index.html">
+          <img src="images/logoSUMMIT.PNG" alt="Logo SUMMIT" class="header-logo-img">
+          <span>SUMMIT</span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active"><a href="#estadisticas"><i class="fa-solid fa-chart-line"></i> Estadísticas</a></li>
+        <li><a href="#usuarios"><i class="fa-solid fa-users"></i> Gestión de Usuarios</a></li>
+        <li><a href="#negocios"><i class="fa-solid fa-store"></i> Negocios y Paquetes</a></li>
+        <li><a href="#reservas"><i class="fa-solid fa-calendar-check"></i> Control de Reservas</a></li>
+        <li><a href="#configuracion"><i class="fa-solid fa-gear"></i> Configuración</a></li>
+        <li><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+      </ul>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1>Panel de Administración</h1>
+        <span class="user-role-badge">Rol: Administrador</span>
+      </header>
+
+      <section class="dashboard-section" id="estadisticas">
+        <h2>Estadísticas</h2>
+        <div class="dashboard-grid">
+          <article class="dashboard-stat">
+            <span>Usuarios registrados</span>
+            <strong>248</strong>
+          </article>
+          <article class="dashboard-stat">
+            <span>Negocios activos</span>
+            <strong>32</strong>
+          </article>
+          <article class="dashboard-stat">
+            <span>Reservas del mes</span>
+            <strong>86</strong>
+          </article>
+          <article class="dashboard-stat">
+            <span>Paquetes publicados</span>
+            <strong>57</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="usuarios">
+        <h2>Gestión de Usuarios</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Clientes y operadores</h3>
+              <p>Consulta los perfiles registrados y el estado de sus cuentas.</p>
+            </div>
+            <a class="btn2 btn-secondary" href="#usuarios">Ver usuarios</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="negocios">
+        <h2>Gestión de Negocios y Paquetes</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Negocios turísticos</h3>
+              <p>32 negocios activos · 4 solicitudes pendientes de revisión.</p>
+            </div>
+            <a class="btn2 btn-secondary" href="#negocios">Gestionar negocios</a>
+          </article>
+          <article class="dashboard-item">
+            <div>
+              <h3>Paquetes publicados</h3>
+              <p>57 paquetes disponibles para los viajeros.</p>
+            </div>
+            <a class="btn2 btn-secondary" href="#negocios">Gestionar paquetes</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="reservas">
+        <h2>Control de Reservas</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Reservas por revisar</h3>
+              <p>12 solicitudes pendientes de confirmación.</p>
+            </div>
+            <span class="status-badge status-confirmed">12 pendientes</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="configuracion">
+        <h2>Configuración</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Preferencias de la plataforma</h3>
+              <p>Administra los parámetros generales y las notificaciones.</p>
+            </div>
+            <a class="btn2 btn-secondary" href="#configuracion">Abrir configuración</a>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

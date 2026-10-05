@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
 const recoverForm = document.getElementById('recoverForm');
 const emailInput = document.getElementById('recoverEmail');
 const errorEmail = document.getElementById('errorRecoverEmail');
-const successMsg = document.getElementById('successMsg'); // Opcional: para mostrar mensaje en pantalla
-
-
 
 if (!recoverForm) return;
 
@@ -33,15 +30,7 @@ recoverForm.addEventListener('submit', function(e) {
       // Simular guardado temporal del correo en localStorage por si se requiere
     localStorage.setItem('emailRecuperacion', emailValue);
 
-      // Si tienes un contenedor de éxito en el HTML, puedes usarlo, de lo contrario usamos alert
-    if (successMsg) {
-        successMsg.textContent = `Hemos enviado las instrucciones de recuperación a: ${emailValue}`;
-        successMsg.style.display = 'block';
-        recoverForm.reset();
-    } else {
-        //alert(`Hemos enviado las instrucciones de recuperación a: ${emailValue}`);
-        window.location.href = 'login.html'; // Redirigir al login tras aceptar
-    }
+    window.location.href = 'login.html';
     }
 });
 
@@ -62,9 +51,6 @@ function mostrarError(input, spanError, mensaje) {
 function limpiarErrores() {
     emailInput.classList.remove('input-error');
     errorEmail.textContent = '';
-    if (successMsg) {
-    successMsg.style.display = 'none';
-    }
 }
 
   // Expresión regular para validar correos
