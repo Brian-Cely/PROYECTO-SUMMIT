@@ -1,52 +1,94 @@
 const registerForm = document.getElementById('registerForm');
+const strongPasswordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]).{8,}$/;
+const birthDateInput = document.getElementById('fechaNacimiento');
+const birthDateError = document.getElementById('errorFechaNacimiento');
+const today = new Date();
+const latestBirthDate = new Date(today);
+latestBirthDate.setFullYear(latestBirthDate.getFullYear() - 18);
+birthDateInput.max = [
+  latestBirthDate.getFullYear(),
+  String(latestBirthDate.getMonth() + 1).padStart(2, '0'),
+  String(latestBirthDate.getDate()).padStart(2, '0')
+].join('-');
 
-registerForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  let valid = true;
-
-  // Elementos
-  const nombre = document.getElementById('nombre');
-  const email = document.getElementById('email');
-  const password = document.getElementById('password');
-  const userRole = document.getElementById('userRole');
-
-  // Limpiar errores previos
-  document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-  document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
-
-  // Validar Nombre
-  if (nombre.value.trim() === '') {
-    mostrarError(nombre, 'errorNombre', 'El nombre es obligatorio.');
-    valid = false;
-  }
-
-  // Validar Correo
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email.value.trim())) {
-    mostrarError(email, 'errorEmail', 'Ingrese un correo electrónico válido.');
-    valid = false;
-  }
-
-  // Validar Contraseña (mínimo 6 caracteres)
-  if (password.value.length < 6) {
-    mostrarError(password, 'errorPassword', 'La contraseña debe tener al menos 6 caracteres.');
-    valid = false;
-  }
-
-  if (userRole.value === '') {
-    mostrarError(userRole, 'errorUserRole', 'Seleccione un tipo de usuario.');
-    valid = false;
-  }
-
-  if (valid) {
-    alert('¡Registro exitoso! Redirigiendo al inicio de sesión...');
-    window.location.href = 'login.html';
-  }
+['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
+  localStorage.removeItem(key);
 });
 
-function mostrarError(inputElement, idSpanError, mensaje) {
-  const errorElement = document.getElementById(idSpanError);
-  errorElement.textContent = mensaje;
-  inputElement.classList.add('input-error');
+function isUnderage(value) {
+  if (!value) return false;
+  const birthDate = new Date(`${value}T00:00:00`);
+  const today = new Date();
+  const adultDate = new Date(birthDate);
+  adultDate.setFullYear(adultDate.getFullYear() + 18);
+  return Number.isNaN(birthDate.getTime()) || adultDate > today;
 }
+
+birthDateInput.addEventListener('change', () => {
+  if (isUnderage(birthDateInput.value)) {
+    birthDateError.textContent = 'No se puede registrar a una persona menor de edad.';
+    birthDateInput.classList.add('input-error');
+    alert('No se puede registrar a una persona menor de edad.');
+    return;
+  }
+  birthDateError.textContent = '';
+  birthDateInput.classList.remove('input-error');
+});
+
+registerForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const fields = {
+    nombre: document.getElementById('nombre'),
+    tipoDocumento: document.getElementById('tipoDocumento'),
+    numeroDocumento: document.getElementById('numeroDocumento'),
+    fechaNacimiento: birthDateInput,
+    telefono: document.getElementById('telefono'),
+    email: document.getElementById('email'),
+    password: document.getElementById('password')
+  };
+
+  document.querySelectorAll('.error-msg').forEach((element) => {
+    element.textContent = '';
+  });
+  document.querySelectorAll('.input-error').forEach((element) => {
+    element.classList.remove('input-error');
+  });
+
+  let valid = true;
+  const showError = (field, message) => {
+    document.getElementById(`error${field[0].toUpperCase()}${field.slice(1)}`).textContent = message;
+    fields[field].classList.add('input-error');
+    valid = false;
+  };
+
+  if (fields.nombre.value.trim().length < 2) {
+    showError('nombre', 'Ingrese su nombre completo.');
+  }
+  if (!['C.C.', 'C.E.', 'Pasaporte'].includes(fields.tipoDocumento.value)) {
+    showError('tipoDocumento', 'Seleccione un tipo de documento válido.');
+  }
+  if (!/^[\w.-]{4,}$/.test(fields.numeroDocumento.value.trim())) {
+    showError('numeroDocumento', 'Ingrese un número de documento válido.');
+  }
+  if (!fields.fechaNacimiento.value) {
+    showError('fechaNacimiento', 'Ingrese su fecha de nacimiento.');
+  } else if (isUnderage(fields.fechaNacimiento.value)) {
+    showError('fechaNacimiento', 'No se puede registrar a una persona menor de edad.');
+    alert('No se puede registrar a una persona menor de edad.');
+  }
+  if (fields.telefono.value.trim().replace(/\D/g, '').length < 7) {
+    showError('telefono', 'Ingrese un teléfono de contacto válido.');
+  }
+  const emailValue = fields.email.value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+    showError('email', 'Ingrese un correo electrónico válido.');
+  }
+  if (!strongPasswordPattern.test(fields.password.value)) {
+    showError('password', 'Use mínimo 8 caracteres, con mayúscula, minúscula y un símbolo.');
+  }
+  if (!valid) return;
+
+  alert('Validación completada. Este registro es una demostración y no guarda tus datos.');
+  window.location.href = 'login.html';
+});

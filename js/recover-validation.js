@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
+  localStorage.removeItem(key);
+});
 const recoverForm = document.getElementById('recoverForm');
 const emailInput = document.getElementById('recoverEmail');
 const errorEmail = document.getElementById('errorRecoverEmail');
@@ -25,11 +28,9 @@ recoverForm.addEventListener('submit', function(e) {
     valid = false;
     }
 
-    // Si la validación es exitosa
+    // La recuperación es solo una demostración; no se conserva el correo.
     if (valid) {
-      // Simular guardado temporal del correo en localStorage por si se requiere
-    localStorage.setItem('emailRecuperacion', emailValue);
-
+    alert('Correo validado. La recuperación es una demostración y no guarda tus datos.');
     window.location.href = 'login.html';
     }
 });

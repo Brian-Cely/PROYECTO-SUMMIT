@@ -52,7 +52,7 @@
           <p>Incluye transporte, recorrido agroturístico, almuerzo típico y degustación de productos locales.</p>
           <p><strong>Precio: $120.000 COP</strong></p>
           <br>
-          <a href="login.html" class="btn2 btn-primary">Reservar Ahora</a>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="calera" data-package-title="La Calera - Día de Campo" data-base-price="120000">Reservar Ahora</button>
         </div>
       </div>
 
@@ -72,7 +72,7 @@
           <p>Senderismo guiado a la cascada más alta de Colombia, ingreso a termales y hospedaje campestre.</p>
           <p><strong>Precio: $250.000 COP</strong></p>
           <br>
-          <a href="login.html" class="btn2 btn-primary">Reservar Ahora</a>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="choachi" data-package-title="Ruta La Chorrera & Termales" data-base-price="250000">Reservar Ahora</button>
         </div>
       </div>
 
@@ -92,11 +92,61 @@
           <p>Entradas a la Catedral de Sal, recorrido histórico por la sabana de Bogotá y taller artesanal.</p>
           <p><strong>Precio: $180.000 COP</strong></p>
           <br>
-          <a href="login.html" class="btn2 btn-primary">Reservar Ahora</a>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="zipaquira" data-package-title="Expedición Catedral de Sal" data-base-price="180000">Reservar Ahora</button>
         </div>
       </div>
     </div>
   </main>
+
+  <dialog class="reservation-modal" id="reservationModal" aria-labelledby="reservationTitle">
+    <div class="reservation-modal-header">
+      <div>
+        <span class="reservation-eyebrow">PLANEA TU EXPERIENCIA</span>
+        <h2 id="reservationTitle">Reservar paquete</h2>
+        <p id="reservationPackageName"></p>
+      </div>
+      <button type="button" class="modal-close" id="closeReservation" aria-label="Cerrar ventana">×</button>
+    </div>
+    <form id="reservationForm" novalidate>
+      <div class="form-group">
+        <label for="travelDate">Fecha de viaje</label>
+        <input type="date" id="travelDate" required>
+        <span class="error-msg" id="errorTravelDate" role="alert"></span>
+      </div>
+      <fieldset class="traveller-fieldset">
+        <legend>Pasajeros</legend>
+        <div class="traveller-grid">
+          <div class="form-group">
+            <label for="adultCount">Adultos</label>
+            <input type="number" id="adultCount" min="1" step="1" value="1" required>
+          </div>
+          <div class="form-group">
+            <label for="childCount">Niños (3 a 17 años)</label>
+            <input type="number" id="childCount" min="0" step="1" value="0" required>
+          </div>
+          <div class="form-group">
+            <label for="seniorCount">Adultos mayores (+60)</label>
+            <input type="number" id="seniorCount" min="0" step="1" value="0" required>
+          </div>
+        </div>
+      </fieldset>
+      <div class="reservation-total">
+        <span id="travellerSummary">1 viajero</span>
+        <strong id="reservationTotal">$120.000 COP</strong>
+      </div>
+      <div class="form-group">
+        <label for="paymentMethod">Método de pago</label>
+        <select id="paymentMethod" required>
+          <option value="">Seleccione un método</option>
+          <option value="PSE / Nequi / Daviplata">PSE / Nequi / Daviplata</option>
+          <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+        </select>
+        <span class="error-msg" id="errorPaymentMethod" role="alert"></span>
+      </div>
+      <p class="reservation-notice">El pago es simulado y no se realizará ningún cobro.</p>
+      <button type="submit" class="btn2 btn-primary reservation-submit">Confirmar reserva</button>
+    </form>
+  </dialog>
 
   <!-- Pie de página -->
   <footer class="main-footer" id="contactanos">
@@ -126,5 +176,6 @@
   </footer>
 
   <script src="js/card-slider.js" defer></script>
+  <script src="js/reserva-modal.js" defer></script>
 </body>
 </html>

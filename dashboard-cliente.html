@@ -22,50 +22,34 @@
         <li><a href="#pagos"><i class="fa-solid fa-credit-card"></i> Mis Pagos</a></li>
         <li><a href="#favoritos"><i class="fa-solid fa-heart"></i> Mis Favoritos</a></li>
         <li><a href="#notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</a></li>
-        <li><a href="index.html"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+        <li><a href="index.html" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
       </ul>
     </aside>
 
     <main class="dashboard-main">
       <header class="dashboard-header">
-        <h1>Bienvenido, Usuario</h1>
+        <h1 id="welcomeHeading">Bienvenido</h1>
         <span class="user-role-badge">Rol: Cliente / Turista</span>
       </header>
 
       <section class="dashboard-section" id="perfil">
         <h2>Mi Perfil</h2>
         <div class="profile-info">
-          <p><strong>Nombre:</strong> Usuario Cliente</p>
-          <p><strong>Correo:</strong> cliente@summit.com</p>
-          <p><strong>Teléfono:</strong> +57 300 123 4567</p>
-          <p><strong>Ciudad:</strong> Bogotá D.C.</p>
+          <p><strong>Nombre:</strong> <span id="profileName"></span></p>
+          <p><strong>Correo:</strong> <span id="profileEmail"></span></p>
+          <p><strong>Teléfono:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Documento:</strong> <span id="profileDocument"></span></p>
         </div>
       </section>
 
       <section class="dashboard-section" id="reservas">
         <h2>Mis Reservas</h2>
-        <div class="dashboard-list">
-          <article class="dashboard-item">
-            <div>
-              <h3>Paquete La Calera - Día de Campo</h3>
-              <p>Fecha: 15 de octubre de 2026 · 2 viajeros</p>
-            </div>
-            <span class="status-badge status-confirmed">Confirmada</span>
-          </article>
-        </div>
+        <div class="dashboard-list" id="reservationList" aria-live="polite"></div>
       </section>
 
       <section class="dashboard-section" id="pagos">
         <h2>Mis Pagos</h2>
-        <div class="dashboard-list">
-          <article class="dashboard-item">
-            <div>
-              <h3>Reserva: Día de Campo en La Calera</h3>
-              <p>Pago realizado · 2 de octubre de 2026</p>
-            </div>
-            <strong>$240.000 COP</strong>
-          </article>
-        </div>
+        <div class="dashboard-list" id="paymentList"></div>
       </section>
 
       <section class="dashboard-section" id="favoritos">
@@ -87,13 +71,14 @@
           <article class="dashboard-item">
             <div>
               <h3>Reserva confirmada</h3>
-              <p>Tu próximo viaje a La Calera está confirmado.</p>
+              <p>Las notificaciones no están disponibles en esta demostración.</p>
             </div>
-            <span>Hoy</span>
+            <span>Sin actividad</span>
           </article>
         </div>
       </section>
     </main>
   </div>
+  <script src="js/dashboard-cliente.js"></script>
 </body>
 </html>

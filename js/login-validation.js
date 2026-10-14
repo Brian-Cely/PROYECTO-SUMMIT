@@ -1,63 +1,35 @@
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
+  localStorage.removeItem(key);
+});
 
-  let valid = true;
+document.getElementById('loginForm').addEventListener('submit', (event) => {
+  event.preventDefault();
 
   const email = document.getElementById('loginEmail');
   const password = document.getElementById('loginPassword');
-  const userRole = document.getElementById('userRole');
+  document.querySelectorAll('.input-error').forEach((element) => {
+    element.classList.remove('input-error');
+  });
 
-  // Limpiar mensajes de error previos en el DOM
-  document.querySelectorAll('.error-msg').forEach(el => el.textContent = '');
-  document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
-
-  // 1. VALIDACIÓN DEL CORREO
-  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const emailValue = email.value.trim();
-
-  if (emailValue === '') {
-    mostrarError(email, 'errorLoginEmail', 'Ingrese su correo.');
+  const emailValue = email.value.trim().toLowerCase();
+  let valid = true;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+    document.getElementById('errorLoginEmail').textContent = 'Ingrese un correo electrónico válido.';
+    email.classList.add('input-error');
     valid = false;
-  } else if (!regexEmail.test(emailValue)) {
-    mostrarError(email, 'errorLoginEmail', 'Ingrese un correo electrónico válido.');
-    valid = false;
+  } else {
+    document.getElementById('errorLoginEmail').textContent = '';
   }
-
-  // 2. VALIDACIÓN DE LA CONTRASEÑA
-  const passwordValue = password.value;
-
-  if (passwordValue === '') {
-    mostrarError(password, 'errorLoginPassword', 'Ingrese su contraseña.');
+  if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9\s]).{8,}$/.test(password.value)) {
+    document.getElementById('errorLoginPassword').textContent =
+      'Use mínimo 8 caracteres, con mayúscula, minúscula y un símbolo.';
+    password.classList.add('input-error');
     valid = false;
-  } else if (passwordValue.length < 8) {
-    mostrarError(password, 'errorLoginPassword', 'La contraseña debe tener al menos 8 caracteres.');
-    valid = false;
+  } else {
+    document.getElementById('errorLoginPassword').textContent = '';
   }
+  if (!valid) return;
 
-  if (userRole.value === '') {
-    mostrarError(userRole, 'errorUserRole', 'Seleccione un tipo de usuario.');
-    valid = false;
-  }
-
-  // 3. BLOQUEO EN CASO DE ERRORES
-  if (!valid) {
-    return; // Detiene la ejecución aquí
-  }
-
-  // Redirigir según el rol seleccionado
-  const dashboard = userRole.value === 'administrador'
-    ? 'dashboard-admin.html'
-    : 'dashboard-cliente.html';
-  window.location.href = dashboard;
+  alert('Validación completada. El inicio de sesión es una demostración y no guarda tus datos.');
+  window.location.href = 'dashboard-cliente.html';
 });
-
-// Función auxiliar necesaria para inyectar errores en el HTML
-function mostrarError(inputElement, idSpanError, mensaje) {
-  const spanError = document.getElementById(idSpanError);
-  if (spanError) {
-    spanError.textContent = mensaje;
-  }
-  if (inputElement) {
-    inputElement.classList.add('input-error');
-  }
-}

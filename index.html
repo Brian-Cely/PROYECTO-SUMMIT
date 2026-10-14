@@ -55,12 +55,18 @@
   <form id="searchForm" class="search-bar">
     <div class="search-item">
       <label for="searchDestination" class="search-label">¿A dónde quieres ir?</label>
-      <input type="text" id="searchDestination" class="search-input" placeholder="Ej: La Calera, Guatavita..." required>
+      <select id="searchDestination" class="search-input" required>
+        <option value="">Selecciona un destino</option>
+        <option value="calera">La Calera</option>
+        <option value="choachi">Choachí</option>
+        <option value="zipaquira">Zipaquirá</option>
+      </select>
     </div>
     <div class="search-item">
       <label for="searchDate" class="search-label">Fecha de viaje</label>
-      <input type="date" id="searchDate" class="search-input">
+      <input type="date" id="searchDate" class="search-input" required>
     </div>
+    <button type="submit" class="search-submit">Buscar paquetes</button>
   </form>
 </section>
 
@@ -212,6 +218,7 @@
     </div>
   </footer>
 
+  <script src="js/index.js" defer></script>
   <script src="js/card-slider.js" defer></script>
 </body>
 </html>
