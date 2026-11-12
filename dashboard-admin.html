@@ -36,20 +36,20 @@
         <h2>Estadísticas</h2>
         <div class="dashboard-grid">
           <article class="dashboard-stat">
-            <span>Usuarios registrados</span>
-            <strong>248</strong>
+            <span>Proveedores aprobados</span>
+            <strong id="approvedProviderCount">0</strong>
           </article>
           <article class="dashboard-stat">
-            <span>Negocios activos</span>
-            <strong>32</strong>
+            <span>Solicitudes de viaje</span>
+            <strong id="customPackageCount">0</strong>
           </article>
           <article class="dashboard-stat">
-            <span>Reservas del mes</span>
-            <strong>86</strong>
+            <span>Ventas estimadas</span>
+            <strong id="estimatedSales">$0 COP</strong>
           </article>
           <article class="dashboard-stat">
-            <span>Paquetes publicados</span>
-            <strong>57</strong>
+            <span>Destinos con solicitudes</span>
+            <strong id="popularDestination">—</strong>
           </article>
         </div>
       </section>
@@ -69,20 +69,21 @@
 
       <section class="dashboard-section" id="negocios">
         <h2>Gestión de Negocios y Paquetes</h2>
+        <div class="dashboard-list" id="providerApprovalList" aria-live="polite"></div>
         <div class="dashboard-list">
           <article class="dashboard-item">
             <div>
               <h3>Negocios turísticos</h3>
-              <p>32 negocios activos · 4 solicitudes pendientes de revisión.</p>
+              <p>Revisa las solicitudes, aprueba establecimientos y publica su catálogo.</p>
             </div>
-            <a class="btn2 btn-secondary" href="#negocios">Gestionar negocios</a>
+            <a class="btn2 btn-secondary" href="#negocios">Ver solicitudes</a>
           </article>
           <article class="dashboard-item">
             <div>
-              <h3>Paquetes publicados</h3>
-              <p>57 paquetes disponibles para los viajeros.</p>
+              <h3>Paquetes personalizados</h3>
+              <p>Consulta las solicitudes creadas en esta demostración local.</p>
             </div>
-            <a class="btn2 btn-secondary" href="#negocios">Gestionar paquetes</a>
+            <a class="btn2 btn-secondary" href="#reservas">Ver reservas</a>
           </article>
         </div>
       </section>
@@ -92,10 +93,10 @@
         <div class="dashboard-list">
           <article class="dashboard-item">
             <div>
-              <h3>Reservas por revisar</h3>
-              <p>12 solicitudes pendientes de confirmación.</p>
+              <h3>Solicitudes del constructor</h3>
+              <p>El estado y los importes son datos de demostración del navegador.</p>
             </div>
-            <span class="status-badge status-confirmed">12 pendientes</span>
+            <span class="status-badge status-pending" id="reservationStatus">0 solicitudes</span>
           </article>
         </div>
       </section>
@@ -114,5 +115,7 @@
       </section>
     </main>
   </div>
+  <script src="js/summit-storage.js" defer></script>
+  <script src="js/dashboard-admin.js" defer></script>
 </body>
 </html>

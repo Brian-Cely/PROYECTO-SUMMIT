@@ -1,7 +1,3 @@
-['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
-  localStorage.removeItem(key);
-});
-
 document.getElementById('loginForm').addEventListener('submit', (event) => {
   event.preventDefault();
 

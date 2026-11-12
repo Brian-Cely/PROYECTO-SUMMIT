@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
-  localStorage.removeItem(key);
-});
 const recoverForm = document.getElementById('recoverForm');
 const emailInput = document.getElementById('recoverEmail');
 const errorEmail = document.getElementById('errorRecoverEmail');

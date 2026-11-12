@@ -8,10 +8,6 @@ const paymentMethod = document.getElementById('paymentMethod');
 const numberFormat = new Intl.NumberFormat('es-CO');
 let selectedPackage = null;
 
-['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
-  localStorage.removeItem(key);
-});
-
 function getTodayDate() {
   const today = new Date();
   return [

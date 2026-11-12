@@ -11,10 +11,6 @@ birthDateInput.max = [
   String(latestBirthDate.getDate()).padStart(2, '0')
 ].join('-');
 
-['summit_users', 'summit_user', 'summit_reservas', 'summit_pending_reservation', 'emailRecuperacion'].forEach((key) => {
-  localStorage.removeItem(key);
-});
-
 function isUnderage(value) {
   if (!value) return false;
   const birthDate = new Date(`${value}T00:00:00`);
