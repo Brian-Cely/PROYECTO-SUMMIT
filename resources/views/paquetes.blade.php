@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paquetes Turísticos - SUMMIT</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+      <div class="logo-text">
+        <span class="logo-title">SUMMIT</span>
+        <span class="logo-subtitle">PAQUETES</span>
+      </div>
+    </div>
+    <nav class="main-nav buttons" aria-label="Navegación principal">
+      <ul>
+        <li><a class="button" href="{{ url('/') }}">INICIO</a></li>
+        <li><a class="button" href="{{ url('/destinos') }}">DESTINOS</a></li>
+        <li><a class="button active" href="{{ url('/paquetes') }}">PAQUETES</a></li>
+        <li><a class="button" href="{{ url('/nosotros') }}">NOSOTROS</a></li>
+        <li><a class="button" href="{{ url('/contactanos') }}">CONTACTANOS</a></li>
+      </ul>
+    </nav>
+    <div class="header-action buttons">
+      <a href="{{ url('/login') }}" class="button">INICIAR SESIÓN</a>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="destinations-section">
+    <h1 class="section-title">Paquetes Turísticos Recomendados</h1>
+
+    <div class="cards-grid">
+      <div class="card" id="paquete-calera">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes del paquete de La Calera">
+            <img src="{{ asset('images/calera.jpg') }}" alt="Paisaje del paquete en La Calera">
+            <img src="{{ asset('images/calera1.jpg') }}" alt="Actividades del paquete en La Calera">
+            <img src="{{ asset('images/calera2.jpg') }}" alt="Naturaleza del paquete en La Calera">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior del paquete de La Calera">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen del paquete de La Calera">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-nature">DÍA COMPLETO</span>
+          <h3>La Calera - Día de Campo</h3>
+          <p>Incluye transporte, recorrido agroturístico, almuerzo típico y degustación de productos locales.</p>
+          <p><strong>Precio: $120.000 COP</strong></p>
+          <br>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="calera" data-package-title="La Calera - Día de Campo" data-base-price="120000">Reservar Ahora</button>
+        </div>
+      </div>
+
+      <div class="card" id="paquete-choachi">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes del paquete de Choachí">
+            <img src="{{ asset('images/choachi.jpg') }}" alt="Paisaje del paquete en Choachí">
+            <img src="{{ asset('images/choachi1.jpg') }}" alt="Actividades del paquete en Choachí">
+            <img src="{{ asset('images/choachi2.jpg') }}" alt="Naturaleza del paquete en Choachí">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior del paquete de Choachí">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen del paquete de Choachí">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-adventure">FIN DE SEMANA</span>
+          <h3>Ruta La Chorrera & Termales</h3>
+          <p>Senderismo guiado a la cascada más alta de Colombia, ingreso a termales y hospedaje campestre.</p>
+          <p><strong>Precio: $250.000 COP</strong></p>
+          <br>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="choachi" data-package-title="Ruta La Chorrera & Termales" data-base-price="250000">Reservar Ahora</button>
+        </div>
+      </div>
+
+      <div class="card" id="paquete-zipaquira">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes del paquete de Zipaquirá">
+            <img src="{{ asset('images/zipaquira.jpg') }}" alt="Paisaje del paquete en Zipaquirá">
+            <img src="{{ asset('images/zipaquira1.jpg') }}" alt="Experiencia cultural en Zipaquirá">
+            <img src="{{ asset('images/zipaquira2.jpg') }}" alt="Patrimonio del paquete en Zipaquirá">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior del paquete de Zipaquirá">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen del paquete de Zipaquirá">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-heritage">CULTURAL</span>
+          <h3>Expedición Catedral de Sal</h3>
+          <p>Entradas a la Catedral de Sal, recorrido histórico por la sabana de Bogotá y taller artesanal.</p>
+          <p><strong>Precio: $180.000 COP</strong></p>
+          <br>
+          <button type="button" class="btn2 btn-primary reserve-button" data-package-id="zipaquira" data-package-title="Expedición Catedral de Sal" data-base-price="180000">Reservar Ahora</button>
+        </div>
+      </div>
+    </div>
+    <div class="builder-callout">
+      <div>
+        <h2>¿Quieres diseñar un viaje a tu medida?</h2>
+        <p>Elige destino, hotel, restaurantes y actividades en un solo lugar.</p>
+      </div>
+      <a class="btn2 btn-primary" href="{{ url('/constructor-paquete') }}">Armar mi viaje</a>
+    </div>
+  </main>
+
+  <dialog class="reservation-modal" id="reservationModal" aria-labelledby="reservationTitle">
+    <div class="reservation-modal-header">
+      <div>
+        <span class="reservation-eyebrow">PLANEA TU EXPERIENCIA</span>
+        <h2 id="reservationTitle">Reservar paquete</h2>
+        <p id="reservationPackageName"></p>
+      </div>
+      <button type="button" class="modal-close" id="closeReservation" aria-label="Cerrar ventana">×</button>
+    </div>
+    <form id="reservationForm" novalidate>
+      <div class="form-group">
+        <label for="travelDate">Fecha de viaje</label>
+        <input type="date" id="travelDate" required>
+        <span class="error-msg" id="errorTravelDate" role="alert"></span>
+      </div>
+      <fieldset class="traveller-fieldset">
+        <legend>Pasajeros</legend>
+        <div class="traveller-grid">
+          <div class="form-group">
+            <label for="adultCount">Adultos</label>
+            <input type="number" id="adultCount" min="1" step="1" value="1" required>
+          </div>
+          <div class="form-group">
+            <label for="childCount">Niños (3 a 17 años)</label>
+            <input type="number" id="childCount" min="0" step="1" value="0" required>
+          </div>
+          <div class="form-group">
+            <label for="seniorCount">Adultos mayores (+60)</label>
+            <input type="number" id="seniorCount" min="0" step="1" value="0" required>
+          </div>
+        </div>
+      </fieldset>
+      <div class="reservation-total">
+        <span id="travellerSummary">1 viajero</span>
+        <strong id="reservationTotal">$120.000 COP</strong>
+      </div>
+      <div class="form-group">
+        <label for="paymentMethod">Método de pago</label>
+        <select id="paymentMethod" required>
+          <option value="">Seleccione un método</option>
+          <option value="PSE / Nequi / Daviplata">PSE / Nequi / Daviplata</option>
+          <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+        </select>
+        <span class="error-msg" id="errorPaymentMethod" role="alert"></span>
+      </div>
+      <p class="reservation-notice">El pago es simulado y no se realizará ningún cobro.</p>
+      <button type="submit" class="btn2 btn-primary reservation-submit">Confirmar reserva</button>
+    </form>
+  </dialog>
+
+  <!-- Pie de página -->
+  <footer class="main-footer" id="contactanos">
+    <div class="footer-content">
+      <section class="footer-info">
+        <h3>Ubícanos</h3>
+        <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+        <p>Teléfono: +1 234 567 890</p>
+      </section>
+
+      <section class="footer-location">
+        <h3>Ubicación Satelital</h3>
+      </section>
+
+      <section class="footer-social">
+        <h3>Redes Sociales</h3>
+        <p><i class="fa-brands fa-facebook"></i> Facebook</p>
+        <p><i class="fa-brands fa-instagram"></i> Instagram</p>
+      </section>
+    </div>
+    
+    <hr class="footer-divider">
+    
+    <div class="footer-copyright">
+      <p>SUMMIT PAQUETES • 2026 TODOS LOS DERECHOS RESERVADOS</p>
+    </div>
+  </footer>
+
+  <script src="{{ asset('js/card-slider.js') }}" defer></script>
+  <script src="{{ asset('js/reserva-modal.js') }}" defer></script>
+</body>
+</html>

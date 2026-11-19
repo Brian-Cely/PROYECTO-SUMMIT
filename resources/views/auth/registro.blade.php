@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Paquetes - Registro</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body class="auth-body">
+    <main class="auth-card auth-card-wide">
+        <p class="auth-links"><a href="{{ url('/') }}">← Volver al inicio</a></p>
+        <div class="logo auth-logo">
+            <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+            <div class="logo-text">
+                <span class="logo-title">SUMMIT</span>
+                <span class="logo-subtitle">PAQUETES</span>
+            </div>
+        </div>
+        <h3>Crear cuenta de viajero</h3>
+        <form id="registerForm" novalidate>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" autocomplete="name" required>
+                    <span class="error-msg" id="errorNombre"></span>
+                </div>
+                <div class="form-group">
+                    <label for="tipoDocumento">Tipo de documento</label>
+                    <select id="tipoDocumento" required>
+                        <option value="">Seleccione un tipo</option>
+                        <option value="C.C.">C.C.</option>
+                        <option value="C.E.">C.E.</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                    <span class="error-msg" id="errorTipoDocumento"></span>
+                </div>
+                <div class="form-group">
+                    <label for="numeroDocumento">Número de documento</label>
+                    <input type="text" id="numeroDocumento" autocomplete="off" required>
+                    <span class="error-msg" id="errorNumeroDocumento"></span>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fechaNacimiento" autocomplete="bday" required>
+                    <span class="error-msg" id="errorFechaNacimiento" role="alert"></span>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono de contacto</label>
+                    <input type="tel" id="telefono" autocomplete="tel" required>
+                    <span class="error-msg" id="errorTelefono"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" autocomplete="email" placeholder="ejemplo@gmail.com" required>
+                    <span class="error-msg" id="errorEmail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" autocomplete="new-password" minlength="8" required>
+                    <small class="form-hint">Mínimo 8 caracteres, una mayúscula, una minúscula y un símbolo.</small>
+                    <span class="error-msg" id="errorPassword"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn3 btn-primary btn-full">Registrarse</button>
+        </form>
+        <p class="auth-footer">¿Ya tienes una cuenta? <a href="{{ url('/login') }}">Inicia sesión</a></p>
+    </main>
+    <script src="{{ asset('js/register-validation.js') }}"></script>
+</body>
+</html>

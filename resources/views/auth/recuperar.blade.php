@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Recuperar Contraseña</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body class="auth-body">
+
+  <div class="auth-card">
+    <p class="auth-links"><a href="{{ url('/') }}">← Volver al inicio</a></p>
+    <div class="logo auth-logo">
+      <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+      <div class="logo-text">
+        <span class="logo-title">SUMMIT</span>
+        <span class="logo-subtitle">PAQUETES</span>
+      </div>
+    </div>
+    <h3>Recuperar Contraseña</h3>
+    <p class="auth-desc">Ingresa un correo válido. La recuperación es una demostración y no enviará ni guardará datos.</p>
+    
+    <form id="recoverForm" novalidate>
+      <div class="form-group">
+        <label for="recoverEmail">Correo Electrónico</label>
+        <input type="email" id="recoverEmail" placeholder="ejemplo@correo.com" required>
+        <span class="error-msg" id="errorRecoverEmail"></span>
+      </div>
+
+      <button type="submit" class="btn3 btn-primary btn-full">Enviar Instrucciones</button>
+    </form>
+
+    <p class="auth-footer"><a href="{{ url('/login') }}">← Volver al inicio de sesión</a></p>
+  </div>
+
+  <script src="{{ asset('js/recover-validation.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Panel del Cliente</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <a class="sidebar-brand" href="{{ url('/') }}">
+          <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+          <span>SUMMIT</span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active"><a href="#perfil"><i class="fa-solid fa-user"></i> Perfil</a></li>
+        <li><a href="#reservas"><i class="fa-solid fa-suitcase"></i> Mis Reservas</a></li>
+        <li><a href="#pagos"><i class="fa-solid fa-credit-card"></i> Mis Pagos</a></li>
+        <li><a href="#favoritos"><i class="fa-solid fa-heart"></i> Mis Favoritos</a></li>
+        <li><a href="#notificaciones"><i class="fa-solid fa-bell"></i> Notificaciones</a></li>
+        <li><a href="{{ url('/') }}" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</a></li>
+      </ul>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <h1 id="welcomeHeading">Bienvenido</h1>
+        <span class="user-role-badge">Rol: Cliente / Turista</span>
+      </header>
+
+      <section class="dashboard-section" id="perfil">
+        <h2>Mi Perfil</h2>
+        <div class="profile-info">
+          <p><strong>Nombre:</strong> <span id="profileName"></span></p>
+          <p><strong>Correo:</strong> <span id="profileEmail"></span></p>
+          <p><strong>Teléfono:</strong> <span id="profilePhone"></span></p>
+          <p><strong>Documento:</strong> <span id="profileDocument"></span></p>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="reservas">
+        <h2>Mis Reservas</h2>
+        <p><a class="btn2 btn-primary" href="{{ url('/constructor-paquete') }}">Crear un paquete personalizado</a></p>
+        <div class="dashboard-list" id="reservationList" aria-live="polite"></div>
+      </section>
+
+      <section class="dashboard-section" id="pagos">
+        <h2>Mis Pagos</h2>
+        <div class="dashboard-list" id="paymentList"></div>
+      </section>
+
+      <section class="dashboard-section" id="favoritos">
+        <h2>Mis Favoritos</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Choachí</h3>
+              <p>Cascadas, senderos y naturaleza.</p>
+            </div>
+            <a class="btn2 btn-secondary" href="{{ url('/destinos') }}">Ver destino</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="notificaciones">
+        <h2>Notificaciones</h2>
+        <div class="dashboard-list">
+          <article class="dashboard-item">
+            <div>
+              <h3>Reserva confirmada</h3>
+              <p>Las notificaciones no están disponibles en esta demostración.</p>
+            </div>
+            <span>Sin actividad</span>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="{{ asset('js/summit-storage.js') }}"></script>
+  <script src="{{ asset('js/dashboard-cliente.js') }}"></script>
+</body>
+</html>

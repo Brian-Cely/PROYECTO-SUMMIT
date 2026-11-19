@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinos - SUMMIT</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+
+  <!-- HEADER / NAVEGACIÓN -->
+  <header class="main-header">
+    <div class="logo">
+      <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+      <div class="logo-text">
+        <span class="logo-title">SUMMIT</span>
+        <span class="logo-subtitle">PAQUETES</span>
+      </div>
+    </div>
+    <nav class="main-nav buttons" aria-label="Navegación principal">
+      <ul>
+        <li><a class="button" href="{{ url('/') }}">INICIO</a></li>
+        <li><a class="button active" href="{{ url('/destinos') }}">DESTINOS</a></li>
+        <li><a class="button" href="{{ url('/paquetes') }}">PAQUETES</a></li>
+        <li><a class="button" href="{{ url('/nosotros') }}">NOSOTROS</a></li>
+        <li><a class="button" href="{{ url('/contactanos') }}">CONTACTANOS</a></li>
+      </ul>
+    </nav>
+    <div class="header-action buttons">
+      <a href="{{ url('/login') }}" class="button">INICIAR SESIÓN</a>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="destinations-section">
+    <h1 class="section-title">Destinos en Cundinamarca</h1>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">Explora los mejores municipios y parajes naturales cerca de Bogotá.</p>
+
+    <div class="cards-grid">
+      <div class="card" id="la-calera">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes de La Calera">
+            <img src="{{ asset('images/calera.jpg') }}" alt="Paisaje de La Calera">
+            <img src="{{ asset('images/calera1.jpg') }}" alt="Experiencia turística en La Calera">
+            <img src="{{ asset('images/calera2.jpg') }}" alt="Naturaleza en La Calera">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior de La Calera">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen de La Calera">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-nature">🌿 NATURALEZA</span>
+          <h3>La Calera</h3>
+          <p>Aire puro, miradores imponentes, gastronomía local y senderismo en el páramo.</p>
+          <a href="{{ url('/paquetes') }}#paquete-calera" class="btn2 btn-secondary">Ver paquetes</a>
+        </div>
+      </div>
+
+      <div class="card" id="choachi">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes de Choachí">
+            <img src="{{ asset('images/choachi.jpg') }}" alt="Paisaje de Choachí">
+            <img src="{{ asset('images/choachi1.jpg') }}" alt="Experiencia turística en Choachí">
+            <img src="{{ asset('images/choachi2.jpg') }}" alt="Naturaleza en Choachí">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior de Choachí">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen de Choachí">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-adventure">⛰️ AVENTURA</span>
+          <h3>Choachí</h3>
+          <p>Aguas termales, la majestuosa cascada La Chorrera y rutas ecoturísticas inolvidables.</p>
+          <a href="{{ url('/paquetes') }}#paquete-choachi" class="btn2 btn-secondary">Ver paquetes</a>
+        </div>
+      </div>
+
+      <div class="card" id="zipaquira">
+        <div class="card-media">
+          <div class="card-slider" aria-label="Imágenes de Zipaquirá">
+            <img src="{{ asset('images/zipaquira.jpg') }}" alt="Paisaje de Zipaquirá">
+            <img src="{{ asset('images/zipaquira1.jpg') }}" alt="Experiencia turística en Zipaquirá">
+            <img src="{{ asset('images/zipaquira2.jpg') }}" alt="Patrimonio de Zipaquirá">
+          </div>
+          <button class="slider-btn prev" type="button" aria-label="Imagen anterior de Zipaquirá">‹</button>
+          <button class="slider-btn next" type="button" aria-label="Siguiente imagen de Zipaquirá">›</button>
+        </div>
+        <div class="card-body">
+          <span class="badge badge-heritage">🏛️ PATRIMONIO</span>
+          <h3>Zipaquirá</h3>
+          <p>Historia, arquitectura colonial y la emblemática Catedral de Sal subterránea.</p>
+          <a href="{{ url('/paquetes') }}#paquete-zipaquira" class="btn2 btn-secondary">Ver paquetes</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="main-footer" id="contactanos">
+    <div class="footer-content">
+      <section class="footer-info">
+        <h3>Ubícanos</h3>
+        <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+        <p>Teléfono: +1 234 567 890</p>
+      </section>
+
+      <section class="footer-location">
+        <h3>Ubicación Satelital</h3>
+      </section>
+
+      <section class="footer-social">
+        <h3>Redes Sociales</h3>
+        <p><i class="fa-brands fa-facebook"></i> Facebook</p>
+        <p><i class="fa-brands fa-instagram"></i> Instagram</p>
+      </section>
+    </div>
+    
+    <hr class="footer-divider">
+    
+    <div class="footer-copyright">
+      <p>SUMMIT PAQUETES • 2026 TODOS LOS DERECHOS RESERVADOS</p>
+    </div>
+  </footer>
+
+  <script src="{{ asset('js/card-slider.js') }}" defer></script>
+</body>
+</html>

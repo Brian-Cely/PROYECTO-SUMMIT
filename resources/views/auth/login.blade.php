@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summit - Iniciar Sesión</title>
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body class="auth-body">
+
+  <div class="auth-card">
+    <p class="auth-links"><a href="{{ url('/') }}">← Volver al inicio</a></p>
+    <div class="logo auth-logo">
+      <img src="{{ asset('images/logoSUMMIT.PNG') }}" alt="Logo SUMMIT" class="header-logo-img">
+      <div class="logo-text">
+        <span class="logo-title">SUMMIT</span>
+        <span class="logo-subtitle">PAQUETES</span>
+      </div>
+    </div>
+    <h3>Iniciar Sesión</h3>
+    
+    <form id="loginForm" novalidate>
+      <div class="form-group">
+        <label for="loginEmail">Correo Electrónico</label>
+        <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required>
+        <span class="error-msg" id="errorLoginEmail"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required>
+        <span class="error-msg" id="errorLoginPassword"></span>
+      </div>
+
+      <div class="auth-links">
+        <a href="{{ url('/recuperar') }}">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <button type="submit" class="btn3 btn-primary btn-full">Ingresar</button>
+    </form>
+
+    <p class="auth-footer">¿No tienes cuenta? <a href="{{ url('/registro') }}">Regístrate</a></p>
+  </div>
+
+  <script src="{{ asset('js/login-validation.js') }}"></script>
+</body>
+</html>  
